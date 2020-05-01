@@ -9,10 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c29fea0fe8c6d74eb248a1fb6fa6993, type: 3}
-  m_Name: DramagmaStriker
+  m_Name: Dramagma King
   m_EditorClassIdentifier: 
-  name: Dramagma Striker
-  status: Striker
-  artwork: {fileID: 21300000, guid: e7d3a7a6bfa0a7446b8b91c21eb6e036, type: 3}
+  name: Dramagma King
+  status: Boss
+  artwork: {fileID: 21300000, guid: 160675ca55993d946b5f91a1886e0f72, type: 3}
   element: FIRE
   Description: 

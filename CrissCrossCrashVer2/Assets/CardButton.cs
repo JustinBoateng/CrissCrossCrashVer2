@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class CardButton : Button {
+public class CardButton : MonoBehaviour {
 
-    public Card[] CardList = new Card[8]; //[C/C/C/C/C/C/CM/CM/S/B]
+    [SerializeField]
+    public Card[] CardList = new Card[10]; //[C/C/C/C/C/C/CM/CM/S/B]
     
 	// Use this for initialization
 	void Start () {
