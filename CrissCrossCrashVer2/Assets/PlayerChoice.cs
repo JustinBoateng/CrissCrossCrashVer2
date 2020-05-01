@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PlayerChoice : MonoBehaviour {
 
+    //cursor
 
+    //image
 
 
 	// Use this for initialization
