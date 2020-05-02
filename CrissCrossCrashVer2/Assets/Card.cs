@@ -10,4 +10,5 @@ public class Card : ScriptableObject {
     public Sprite artwork;
     public string element;
     public string Description;
+    public string code;
 }

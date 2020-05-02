@@ -44,11 +44,11 @@ public class CardDisplay : MonoBehaviour
         if (input > 0) CurrCard = ((CurrCard + 1) % CardList.Length);
         else if (input < 0) CurrCard = ((CurrCard + (CardList.Length-1)) % CardList.Length);
 
-        while (CardList[CurrCard] == null)
+        /*while (CardList[CurrCard] == null)
         {
             if (input > 0) CurrCard = ((CurrCard + 1) % CardList.Length);
             else if (input < 0) CurrCard = ((CurrCard + (CardList.Length - 1)) % CardList.Length);
-        }
+        }*/
 
         CardShow();
 

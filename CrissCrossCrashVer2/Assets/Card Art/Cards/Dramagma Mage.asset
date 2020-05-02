@@ -11,8 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c29fea0fe8c6d74eb248a1fb6fa6993, type: 3}
   m_Name: Dramagma Mage
   m_EditorClassIdentifier: 
-  name: Dramagma Mage
+  name: Dramagma Painter Lisa
   status: Ether
   artwork: {fileID: 21300000, guid: c516df5af25e1fb40a97b8e65f96a6de, type: 3}
   element: FIRE
   Description: 
+  code: Dramagma

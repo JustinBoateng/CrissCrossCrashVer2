@@ -11,8 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c29fea0fe8c6d74eb248a1fb6fa6993, type: 3}
   m_Name: Dramagma King
   m_EditorClassIdentifier: 
-  name: Dramagma King
+  name: Dramagma Director
   status: Boss
   artwork: {fileID: 21300000, guid: 160675ca55993d946b5f91a1886e0f72, type: 3}
   element: FIRE
   Description: 
+  code: Dramagma
