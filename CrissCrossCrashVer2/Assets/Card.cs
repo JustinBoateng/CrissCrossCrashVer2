@@ -11,4 +11,6 @@ public class Card : ScriptableObject {
     public string element;
     public string Description;
     public string code;
+
+    public float zoom;
 }

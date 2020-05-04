@@ -7,17 +7,28 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 public class CardCSS : MonoBehaviour {
 
-    [SerializeField]
-    public CardButton[] ArchetypeList = new CardButton[16]; //Size of the LIST of card buttons
+    //[SerializeField]
+    //public CardButton[] ArchetypeList = new CardButton[16]; //Size of the LIST of card buttons
+
+    public List<Card> ArchetypeList = new List<Card>();
+
+    //public GameObject[] Cursors = new GameObject[2];
+
+    public GameObject cardcellprefab;
 
     private int u = 0;
 
     // Use this for initialization
     void Start() {
 
+        foreach (Card card in ArchetypeList)
+        {
+            SpawnCardCell(card);
+        }
+
         //initialize a certain function for every button using the "delegate" command
         //
-        while (u <= ArchetypeList.Length - 1)
+        /*while (u <= ArchetypeList.Length - 1)
         {
             Button CB = ArchetypeList[u].GetComponent<Button>();
 
@@ -34,13 +45,31 @@ public class CardCSS : MonoBehaviour {
             }));
 
             u++;
-        }
+        }*/ 
         
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		//if(Cursor's raycast is over a CardButton type and the input given was "A")
+        //run PopulatePanel(CardButton's.getcomponent.Name, CursorNumber);
 	}
+
+    public void SpawnCardCell(Card c)
+    {
+        GameObject cardcell = Instantiate(cardcellprefab, transform);
+
+        Image artwork = cardcell.transform.Find("Art").GetComponent<Image>();
+
+        artwork.sprite = c.artwork;
+
+        Vector2 pixelSize = new Vector2(artwork.sprite.texture.width, artwork.sprite.texture.height);
+        Vector2 pixelPivot = artwork.sprite.pivot;
+        Vector2 uiPivot = new Vector2 (pixelPivot.x / pixelSize.x, pixelPivot.y / pixelSize.y);
+
+        artwork.GetComponent<RectTransform>().pivot = uiPivot;
+        artwork.GetComponent<RectTransform>().sizeDelta *= c.zoom;
+
+    }
 }

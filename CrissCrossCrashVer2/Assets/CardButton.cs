@@ -6,8 +6,8 @@ public class CardButton : MonoBehaviour {
 
     [SerializeField]
     public Card[] CardList = new Card[6]; //[C/C/C/C/C/C/CM/CM/S/B] //holding a list of the cards to send to the CardDisplay
-    
-    
+
+    public BoxCollider2D Detect = new BoxCollider2D();
 
 	// Use this for initialization
 	void Start () {

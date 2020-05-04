@@ -1,14 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 public class CardEncyclopedia : MonoBehaviour {
+
+
+    public CardDisplay[] UpperDisplay = new CardDisplay[2];
+
+    [SerializeField]
+    public CardCSS CardButtons;
 
     public Card[] CardDatabase = new Card[55];
 
 	// Use this for initialization
 	void Start () {
-		
+        /*for (int i = 0; i < CardButtons.ArchetypeList.Length; i++)
+        {
+            CardButtons.ArchetypeList[i].GetComponent<Button>().
+        }*/
+	
 	}
 	
 	// Update is called once per frame
