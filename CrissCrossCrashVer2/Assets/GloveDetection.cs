@@ -6,25 +6,28 @@ using UnityEngine.UI;
 
 
 public class GloveDetection : MonoBehaviour {
-    [SerializeField]
-    private Canvas canvas;
+
     private GraphicRaycaster gr1;
-    private PointerEventData ped1 = new PointerEventData(EventSystem.current);
-   
+    private PointerEventData ped1 = new PointerEventData(null);
+ 
     void Start () {
-        gr1 = GetComponent<GraphicRaycaster>();
-      
+ 
+        gr1 = GetComponentInParent<GraphicRaycaster>();
+        //make sure that the gloves have GloveMovement, GloveDetection, AND a Canvas script attached
+        //I suppose that the gloves need a Canvas and not their very own GR themselves to use their parent's GR.
+        //This works because the Cursor's IMMEDIATE parent is the Canvas. I dont know if any grandparent shenanigans can affect it, but dont tempt fate.
     }
-	
-	// Update is called once per frame
-	void Update () {
-       
+
+    // Update is called once per frame
+    void Update () {
+
         ped1.position = Camera.main.WorldToScreenPoint(transform.position);
         List<RaycastResult> results = new List<RaycastResult>();
         gr1.Raycast(ped1, results);
 
         if (results.Count > 0)
         {
+            Debug.Log("Detection");
             Debug.Log(results[0].gameObject.name);
         }
 

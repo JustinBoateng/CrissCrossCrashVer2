@@ -14,9 +14,17 @@ public class CardCSS : MonoBehaviour {
 
     //public GameObject[] Cursors = new GameObject[2];
 
+    public CardCSS instance;
+
     public GameObject cardcellprefab;
 
     private int u = 0;
+
+
+    /*private void Awake()
+    {
+        instance = this;
+    }*/
 
     // Use this for initialization
     void Start() {
@@ -60,6 +68,8 @@ public class CardCSS : MonoBehaviour {
     {
         GameObject cardcell = Instantiate(cardcellprefab, transform);
 
+
+        cardcell.name = c.code;
         Image artwork = cardcell.transform.Find("Art").GetComponent<Image>();
 
         artwork.sprite = c.artwork;
@@ -71,5 +81,7 @@ public class CardCSS : MonoBehaviour {
         artwork.GetComponent<RectTransform>().pivot = uiPivot;
         artwork.GetComponent<RectTransform>().sizeDelta *= c.zoom;
 
+        cardcell.transform.Find("Art").gameObject.name = c.code; //for some reason, the gloves detect the art and not the pictures holding the art...
+                                                                 //fuck it, just rename the pictures. We just need to differenciate the icons from each other.
     }
 }
