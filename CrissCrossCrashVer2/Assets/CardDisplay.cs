@@ -54,10 +54,10 @@ public class CardDisplay : MonoBehaviour
 
     }
 
-    public void CardArrayFill (Card[] CardButtonList) //clicking a button will run this function with its own CardList, thereby giving it to the card display
+    public void CardArrayFill (string s) //clicking a button will run this function with its own CardList, thereby giving it to the card display
     {
         DisplayActive();
-        CardList = CardButtonList;
+        //CardList = CardButtonList;
         CurrCard = 0;
         CardShow();
 
