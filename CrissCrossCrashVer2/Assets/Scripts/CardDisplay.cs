@@ -3,24 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 public class CardDisplay : MonoBehaviour
-{
-
-    public static Card[] CardList = new Card[10];
-    public static Card card;
-    public static int CurrCard = 0;
-    public static bool ActiveDisplay = false;
-
+{ 
     [SerializeField]
     public Text nameText;
+
     [SerializeField]
     public Text description;
+
     [SerializeField]
     public Image Artwork;
+
     [SerializeField]
-    public Sprite NullArtwork;
-    public Text Element;
-    [SerializeField]
-    public Image ElementImage;
+    public Image StatusImage;
+}
+    /*
+
+    //public Sprite NullArtwork;
+
+    //public Text Element;
+
 
     // Use this for initialization
     void Start()
@@ -48,7 +49,7 @@ public class CardDisplay : MonoBehaviour
         {
             if (input > 0) CurrCard = ((CurrCard + 1) % CardList.Length);
             else if (input < 0) CurrCard = ((CurrCard + (CardList.Length - 1)) % CardList.Length);
-        }*/
+        }
 
         CardShow();
 
@@ -95,3 +96,4 @@ public class CardDisplay : MonoBehaviour
         ActiveDisplay = false;
     }
 }
+*/

@@ -9,6 +9,9 @@ public class GloveMovement : MonoBehaviour {
     private Rigidbody2D myrigidbody = new Rigidbody2D();
 
     [SerializeField]
+    public DisplayHUD DHUD;
+
+    [SerializeField]
     public int GloveNumber;
 
     [SerializeField]
@@ -37,18 +40,18 @@ public class GloveMovement : MonoBehaviour {
         List<RaycastResult> results = new List<RaycastResult>();
         gr.Raycast(ped, results);
 
-        if (results.Count > 0)
-        {
-            Debug.Log("Detection");
-            Debug.Log("Name: " + results[0].gameObject.name + " Tag:  " + results[0].gameObject.tag);
-        }
+        //if (results.Count > 0)
+        //{
+        //    Debug.Log("Detection");
+        //    Debug.Log("Name: " + results[0].gameObject.name + " Tag:  " + results[0].gameObject.tag);
+        //}
 
         //so now we can detect the name of the cards we hover
 
-        //if (Input.GetButton("Submit") && results[0].gameObject.tag == "CardButton" ) //if the "Submit" button is clicked while the cursor is over a card button
-        //{
-        //    DisplayHUD.CardArrayFill(results[0].gameObject.name, GloveNumber); // run CardArrayFill using the Button's name (which is actually a reference to the code in the Card Encyclopedia to look for)
-        //}
+        if (Input.GetButton("Submit") && results[0].gameObject.tag == "CardButton" ) //if the "Submit" button is clicked while the cursor is over a card button
+        {
+            DHUD.CardArrayFill(results[0].gameObject.name, GloveNumber-1); // run CardArrayFill using the Button's name (which is actually a reference to the code in the Card Encyclopedia to look for)
+        }
 
         //DisplayHUD will be the thing that contains the two CardDisplays, 
         //and THAT's what you'll refer to when calling DisplayFill, giving a string(Code) and an int (Glove Number)

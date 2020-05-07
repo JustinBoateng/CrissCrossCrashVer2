@@ -17,3 +17,5 @@ MonoBehaviour:
   element: FIRE
   Description: 
   code: Dramagma
+  zoom: 0
+  CE: {fileID: 114394982652654310, guid: 02a620b09c15db344946d2661cf9dcf2, type: 2}

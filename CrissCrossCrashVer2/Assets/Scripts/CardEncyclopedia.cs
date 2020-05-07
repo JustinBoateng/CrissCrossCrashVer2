@@ -11,16 +11,25 @@ public class CardEncyclopedia : MonoBehaviour {
 
     public CardDisplay[] UpperDisplay = new CardDisplay[2];
 
-    [SerializeField]
-    public CardCSS CardButtons;
+    //[SerializeField]
+    //public CardCSS CardButtons;
 
-    public Card[] CardDatabase = new Card[55];
+    [SerializeField]
+    public Sprite[] Icons = new Sprite[25];
+
+    [SerializeField]
+    //public int DatabaseSize;
+
+    public Card[] CardDatabase = new Card[11];
 
 	// Use this for initialization
 	void Start () {
         /*for (int i = 0; i < CardButtons.ArchetypeList.Length; i++)
         {
-            CardButtons.ArchetypeList[i].GetComponent<Button>().
+            CardButtons.ArchetypeList[i].GetComponent<Button>().onClick ->AddListener -> delegate
+
+            
+
         }*/
 	
 	}
@@ -33,6 +42,26 @@ public class CardEncyclopedia : MonoBehaviour {
         //Blank.
     }
 
+    public Sprite StatusTranslate(string Element, string Status)
+    {
+        for (int i = 0; i < Icons.Length; i++)
+        {
+            Debug.Log("i is: " + i + ", WantedElement is: " + Element + " , WantedStatus is: " + Status);
+            Debug.Log("Icons[" + i + "] is: " + Icons[i].name);
+
+            if (Icons[i].name.ToLower().Contains(Element.ToLower()))
+                {
+                 if (Icons[i].name.ToLower().Contains(Status.ToLower()))
+                    return Icons[i];
+                }
+        }
+        return Icons[0];//return BLANK
+    }
+
+    public int getDatabaseLength()
+    {
+        return CardDatabase.Length;
+    }
 
     //scrap the Cards on buttons idea. Unity might not be able to handle that. Takes a full minute just to start up...
     //rather
