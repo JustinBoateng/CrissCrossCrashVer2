@@ -9,13 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c29fea0fe8c6d74eb248a1fb6fa6993, type: 3}
-  m_Name: Dramagma SmogSmith
+  m_Name: Furious Floral Feline
   m_EditorClassIdentifier: 
-  name: Dramagma Smogsmith
-  status: CheckMate
-  artwork: {fileID: 21300000, guid: 67a0306c39e80ac438a1ea6a4e3301f1, type: 3}
-  element: FIRE
+  name: Furious Floral Feline
+  status: Checkmate
+  artwork: {fileID: 21300000, guid: f5960a999752f6b48a638afb8c609e44, type: 3}
+  element: Wind
   Description: 
-  code: Dramagma
+  code: Etc
   zoom: 0
-  CE: {fileID: 114394982652654310, guid: 02a620b09c15db344946d2661cf9dcf2, type: 2}

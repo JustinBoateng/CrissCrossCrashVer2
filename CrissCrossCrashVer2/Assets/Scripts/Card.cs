@@ -4,10 +4,8 @@ using UnityEngine;
 
 [CreateAssetMenu (fileName = "New Card", menuName = "Card")]
 public class Card : ScriptableObject {
-
-
-    
-    public string name;
+ 
+    public string cardname;
     public string status;
     public Sprite artwork;
     public string element;
@@ -16,11 +14,4 @@ public class Card : ScriptableObject {
 
     public float zoom;
 
-    [SerializeField]
-    public CardEncyclopedia CE;
-
-    public Sprite getStatus(string Element, string Status)
-    {
-        return CE.StatusTranslate(Element, Status);
-    }
 }

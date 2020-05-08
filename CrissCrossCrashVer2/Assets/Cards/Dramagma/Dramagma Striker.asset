@@ -9,13 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c29fea0fe8c6d74eb248a1fb6fa6993, type: 3}
-  m_Name: Jigasaw Slayer
+  m_Name: Dramagma Striker
   m_EditorClassIdentifier: 
-  name: Jigasaw Slayer
-  status: Ether
-  artwork: {fileID: 21300000, guid: c7bf01d6dd537254e897b3ed6d7aba42, type: 3}
-  element: Wind
+  cardname: Dramagma PropSetter
+  status: Striker
+  artwork: {fileID: 21300000, guid: e7d3a7a6bfa0a7446b8b91c21eb6e036, type: 3}
+  element: FIRE
   Description: 
-  code: Jigasaw
-  zoom: 5
-  CE: {fileID: 114394982652654310, guid: 02a620b09c15db344946d2661cf9dcf2, type: 2}
+  code: Dramagma
+  zoom: 4

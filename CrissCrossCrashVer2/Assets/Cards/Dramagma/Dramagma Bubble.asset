@@ -9,13 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c29fea0fe8c6d74eb248a1fb6fa6993, type: 3}
-  m_Name: Snowbud Bubble Hands
+  m_Name: Dramagma Bubble
   m_EditorClassIdentifier: 
-  name: Snowbud Bubble Hands
-  status: Striker
-  artwork: {fileID: 21300000, guid: 5406af66f51eeff4aa4c8499c0b19a11, type: 3}
-  element: Water
+  cardname: Dramagma Bubble
+  status: Psychic
+  artwork: {fileID: 21300000, guid: 85ecbb331f3787a4f93302c2e27b0eda, type: 3}
+  element: FIRE
   Description: 
-  code: Snowbud
-  zoom: 3
-  CE: {fileID: 114394982652654310, guid: 02a620b09c15db344946d2661cf9dcf2, type: 2}
+  code: Dramagma
+  zoom: 0

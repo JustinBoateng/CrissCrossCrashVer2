@@ -9,13 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c29fea0fe8c6d74eb248a1fb6fa6993, type: 3}
-  m_Name: Twiggity Archer
+  m_Name: Speedster Dr. NightLight
   m_EditorClassIdentifier: 
-  name: Twiggity Archer
-  status: Ether
-  artwork: {fileID: 21300000, guid: be91e5fa08e3d874493c097db444e922, type: 3}
-  element: Earth
+  name: Speedster Dr. NightLight
+  status: Boss
+  artwork: {fileID: 21300000, guid: e1ef77a3daeb76a49a2860610875ca48, type: 3}
+  element: Fire
   Description: 
-  code: Twiggity
-  zoom: 4
-  CE: {fileID: 114394982652654310, guid: 02a620b09c15db344946d2661cf9dcf2, type: 2}
+  code: Speedster
+  zoom: 0

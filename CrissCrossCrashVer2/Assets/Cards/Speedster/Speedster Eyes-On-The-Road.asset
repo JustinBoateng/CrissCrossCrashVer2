@@ -9,13 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c29fea0fe8c6d74eb248a1fb6fa6993, type: 3}
-  m_Name: Lost Watchdog
+  m_Name: Speedster Eyes-On-The-Road
   m_EditorClassIdentifier: 
-  name: Lost Watchdog
-  status: CheckMate
-  artwork: {fileID: 21300000, guid: f5b0c1c72e0ce5a4eae8ecdd6f28b030, type: 3}
+  name: 'Speedster: Eyes-On-The-Road'
+  status: Checkmate
+  artwork: {fileID: 21300000, guid: 2a75ba64f9484ea40ab1271b53ec58c1, type: 3}
   element: Light
   Description: 
-  code: Etc
-  zoom: 3
-  CE: {fileID: 114394982652654310, guid: 02a620b09c15db344946d2661cf9dcf2, type: 2}
+  code: Speedster
+  zoom: 0

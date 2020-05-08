@@ -13,25 +13,29 @@ public class DisplayHUD : MonoBehaviour {
     public CardEncyclopedia CE;
 
     public static bool[] ActiveDisplay = new bool[2];//Flag to Toggle whether or not the Display is active     
-    public static bool[] stickneutral = new bool[2];
 
+    [SerializeField]
+    public GloveMovement[] Gloves = new GloveMovement[2];
 
     public static List<Card>[] SampledArray = new List<Card>[2]; 
     
     public static int[] CurrCard = new int[2];
 
     public static float[] hor = new float [2];
-    public static float[] ver = new float [2];
+    public static float[] prevhor = new float [2];
+    public static bool[] stickneutral = new bool[2];
 
 
 
-	// Use this for initialization
-	void Start () {
-        for (int i = 0; i < ActiveDisplay.Length; i++) ActiveDisplay[i] = false;
-        SampledArray[0] = new List<Card>();
-        SampledArray[1] = new List<Card>();
-        stickneutral[0] = false;
-        stickneutral[1] = false;
+    // Use this for initialization
+    void Start () {
+        for (int i = 0; i < Gloves.Length; i++)
+        {
+            ActiveDisplay[i] = false;
+            SampledArray[i] = new List<Card>();
+            stickneutral[i] = true;
+        }
+
     }
 
     // Update is called once per frame
@@ -40,14 +44,33 @@ public class DisplayHUD : MonoBehaviour {
         //when clickling on a button, run _______ to assign the values to the above panels
         //when moving left or right, , change the array number, and then run ________ again with the seleced card 
 
-        hor[0] = Input.GetAxis("Horizontal");
-        hor[1] = Input.GetAxis("Horizontal2");
 
-        if (hor[0] == 0) stickneutral[0] = false;
-        if (hor[1] == 0) stickneutral[1] = false;
+        //hor[0] = Input.GetAxis("Horizontal");
+        //hor[1] = Input.GetAxis("Horizontal2");
+
+        if (Input.GetAxis("Horizontal") > 0) hor[0] = 1;
+        if (Input.GetAxis("Horizontal") < 0) hor[0] = -1;
+        if (Input.GetAxis("Horizontal") == 0) hor[0] = 0;
+
+
+        //stickneutral[0] = false;
+
+
+        Debug.Log(hor[0]);
+
+        if (//    ((hor[0] < 0) && (hor[0] > prevhor[0]))  //if input is left, and we stop going left for a minute
+            //||  ((hor[0] > 0) && (hor[0] < prevhor[0])  ||)  //if input is right, and we stop going right for a minute
+              (hor[0] == 0)                        //if there IS no input   
+            ) stickneutral[0] = true;                //the "stick" is considered neutral
+
+        if (hor[1] == 0) stickneutral[1] = true;
 
         if (hor[0] != 0 && ActiveDisplay[0] == true) { CardUpdate(hor[0] , 0); }
         if (hor[1] != 0 && ActiveDisplay[1] == true) { CardUpdate(hor[1] , 1); }
+
+        prevhor[0] = hor[0];
+        prevhor[1] = hor[1];
+
 
         //if (Input.GetButtonDown("Horizontal") > true) { CardUpdate(1 ,0); }
         //if (Input.GetButtonDown("Left")) { CardUpdate(-1, 0); }
@@ -55,15 +78,15 @@ public class DisplayHUD : MonoBehaviour {
         //CardUpdate goes through the CardDisplay's individual array of cards.
 
         if (Input.GetButton("Cancel")) CardArrayEmpty(0);
-
+        if (Input.GetButton("Cancel2")) CardArrayEmpty(1);
     }
 
 
     public void CardUpdate(float input, int player)
     {
-        if (stickneutral[player] == true) return;
+        if (stickneutral[player] == false) return; //if we're still leaning, exit immediately
 
-        if (stickneutral[player] == false) stickneutral[player] = true;
+        if (stickneutral[player] == true) stickneutral[player] = false; //if we pressed left or right the first time, take only that input and put up the flag disregarding any other input
 
 
         if (input > 0) CurrCard[player] = ((CurrCard[player] + 1) % SampledArray[player].Count);
@@ -76,18 +99,18 @@ public class DisplayHUD : MonoBehaviour {
     {
         //
         int i = 0;
-        Debug.Log("i is " + i);
-        Debug.Log("CardDatabase Length is " + CE.getDatabaseLength());
-        Debug.Log("CardArrayFill, Entering While Loop with " + code);
+        //Debug.Log("i is " + i);
+        //Debug.Log("CardDatabase Length is " + CE.getDatabaseLength());
+        //Debug.Log("CardArrayFill, Entering While Loop with " + code);
 
         while (i < CE.getDatabaseLength())
         {
-            Debug.Log("CardArrayFill, Checking card #" + i);
+            //Debug.Log("CardArrayFill, Checking card #" + i);
             if (code.ToLower().Contains(CE.CardDatabase[i].code.ToLower()))
             {
-                Debug.Log("Player: " + player);
-                Debug.Log("Code: " + code.ToLower() + ", Current EncyCard: " + CE.CardDatabase[i].code.ToLower());
-                Debug.Log("Sample Array length of player " + player + ": " + SampledArray[player].Count());
+                //Debug.Log("Player: " + player);
+                //Debug.Log("Code: " + code.ToLower() + ", Current EncyCard: " + CE.CardDatabase[i].code.ToLower());
+                //Debug.Log("Sample Array length of player " + player + ": " + SampledArray[player].Count());
                 SampledArray[player].Add(CE.CardDatabase[i]);
 
             }
@@ -103,10 +126,10 @@ public class DisplayHUD : MonoBehaviour {
     {
         Card c = CL[CardPosition];
 
-        Previews[player].nameText.text = c.name;
+        Previews[player].nameText.text = c.cardname;
         Previews[player].description.text = c.Description;
         Previews[player].Artwork.GetComponentInChildren<Image>().sprite = c.artwork; 
-        Previews[player].StatusImage.GetComponentInChildren<Image>().sprite = c.getStatus(c.element, c.status);
+        Previews[player].StatusImage.GetComponentInChildren<Image>().sprite = CE.StatusTranslate(c.element, c.status);
         
     }
 
@@ -123,14 +146,16 @@ public class DisplayHUD : MonoBehaviour {
     }
 
   
-    public static void DisplayActive(int player)
+    public void DisplayActive(int player)
     {
         ActiveDisplay[player] = true;
+        Gloves[player].gameObject.SetActive(false);
     }
 
-    public static void DisplayInactive(int player)
+    public void DisplayInactive(int player)
     {
         ActiveDisplay[player] = false;
+        Gloves[player].gameObject.SetActive(true);
     }
     
 }

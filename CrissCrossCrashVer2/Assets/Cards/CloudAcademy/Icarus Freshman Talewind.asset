@@ -9,13 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c29fea0fe8c6d74eb248a1fb6fa6993, type: 3}
-  m_Name: Dramagma Mage
+  m_Name: Icarus Freshman Talewind
   m_EditorClassIdentifier: 
-  name: Dramagma Painter Lisa
+  name: Icarus Freshman Talewind
   status: Ether
-  artwork: {fileID: 21300000, guid: c516df5af25e1fb40a97b8e65f96a6de, type: 3}
-  element: FIRE
+  artwork: {fileID: 21300000, guid: afeb7c635b951d54983351369382a31f, type: 3}
+  element: Water
   Description: 
-  code: Dramagma
+  code: CloudAcademy
   zoom: 0
-  CE: {fileID: 114394982652654310, guid: 02a620b09c15db344946d2661cf9dcf2, type: 2}

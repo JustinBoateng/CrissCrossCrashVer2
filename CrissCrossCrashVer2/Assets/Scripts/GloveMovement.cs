@@ -31,8 +31,8 @@ public class GloveMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (GloveNumber == 1) {hor = Input.GetAxis("Horizontal"); ver = Input.GetAxis("Vertical");}
-        else if (GloveNumber == 2){hor = Input.GetAxis("Horizontal2"); ver = Input.GetAxis("Vertical2");}
+        if (GloveNumber == 0) {hor = Input.GetAxis("Horizontal"); ver = Input.GetAxis("Vertical");}
+        else if (GloveNumber == 1){hor = Input.GetAxis("Horizontal2"); ver = Input.GetAxis("Vertical2");}
         myrigidbody.velocity = new Vector2(hor * SpeedScale, ver * SpeedScale);
 
 
@@ -50,7 +50,7 @@ public class GloveMovement : MonoBehaviour {
 
         if (Input.GetButton("Submit") && results[0].gameObject.tag == "CardButton" ) //if the "Submit" button is clicked while the cursor is over a card button
         {
-            DHUD.CardArrayFill(results[0].gameObject.name, GloveNumber-1); // run CardArrayFill using the Button's name (which is actually a reference to the code in the Card Encyclopedia to look for)
+            DHUD.CardArrayFill(results[0].gameObject.name, GloveNumber); // run CardArrayFill using the Button's name (which is actually a reference to the code in the Card Encyclopedia to look for)
         }
 
         //DisplayHUD will be the thing that contains the two CardDisplays, 

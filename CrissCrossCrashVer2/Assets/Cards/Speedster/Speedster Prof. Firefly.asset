@@ -9,13 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c29fea0fe8c6d74eb248a1fb6fa6993, type: 3}
-  m_Name: Speedster Eager Evening Elk
+  m_Name: Speedster Prof. Firefly
   m_EditorClassIdentifier: 
-  name: Speedster Eager Evening Elk
-  status: Striker
-  artwork: {fileID: 21300000, guid: 579a0dd27e070dc4d96e37724db86df5, type: 3}
-  element: Earth
+  name: 'Speedster: Prof. Firefly'
+  status: Psychic
+  artwork: {fileID: 21300000, guid: d0e65be1fbe9c4a45ba1b10f1c49c6c7, type: 3}
+  element: Water
   Description: 
   code: Speedster
-  zoom: 5
-  CE: {fileID: 114394982652654310, guid: 02a620b09c15db344946d2661cf9dcf2, type: 2}
+  zoom: 0
