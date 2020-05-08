@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class DisplayHUD : MonoBehaviour {
 
     [SerializeField]
-    public CardDisplay[] Previews = new CardDisplay[2];
+    public CardDisplay[] Previews = new CardDisplay[2]; 
 
     [SerializeField]
     public CardEncyclopedia CE;
@@ -15,7 +15,7 @@ public class DisplayHUD : MonoBehaviour {
     public static bool[] ActiveDisplay = new bool[2];//Flag to Toggle whether or not the Display is active     
 
     [SerializeField]
-    public GloveMovement[] Gloves = new GloveMovement[2];
+    public GloveMovement[] Gloves = new GloveMovement[2];//Cursor References
 
     public static List<Card>[] SampledArray = new List<Card>[2]; 
     
@@ -31,9 +31,10 @@ public class DisplayHUD : MonoBehaviour {
     void Start () {
         for (int i = 0; i < Gloves.Length; i++)
         {
-            ActiveDisplay[i] = false;
+            //ActiveDisplay[i] = false;
             SampledArray[i] = new List<Card>();
             stickneutral[i] = true;
+            //hor[i] = Input.GetAxis("Horizontal" + i);
         }
 
     }
@@ -43,30 +44,33 @@ public class DisplayHUD : MonoBehaviour {
     {
         //when clickling on a button, run _______ to assign the values to the above panels
         //when moving left or right, , change the array number, and then run ________ again with the seleced card 
+        //hor[0] = Input.GetAxis("Horizontal0");
+        //hor[1] = Input.GetAxis("Horizontal1");
+
+        for (int i = 0; i < Gloves.Length; i++)
+        { hor[i] = Input.GetAxis("Horizontal"+i); }
+
+        
+        if (Input.GetAxis("Horizontal0") > 0) hor[0] = 1;
+        if (Input.GetAxis("Horizontal0") < 0) hor[0] = -1;
+        if (Input.GetAxis("Horizontal0") == 0) hor[0] = 0;
+
+        if (Input.GetAxis("Horizontal1") > 0) hor[1] = 1;
+        if (Input.GetAxis("Horizontal1") < 0) hor[1] = -1;
+        if (Input.GetAxis("Horizontal1") == 0) hor[1] = 0;
+        
 
 
-        //hor[0] = Input.GetAxis("Horizontal");
-        //hor[1] = Input.GetAxis("Horizontal2");
+        //glove navigation is handled in the glove class
+        //while Card-in-the-HUD navigation is handled in this class
 
-        if (Input.GetAxis("Horizontal") > 0) hor[0] = 1;
-        if (Input.GetAxis("Horizontal") < 0) hor[0] = -1;
-        if (Input.GetAxis("Horizontal") == 0) hor[0] = 0;
+        //Debug.Log(hor[0]);
 
-
-        //stickneutral[0] = false;
-
-
-        Debug.Log(hor[0]);
-
-        if (//    ((hor[0] < 0) && (hor[0] > prevhor[0]))  //if input is left, and we stop going left for a minute
-            //||  ((hor[0] > 0) && (hor[0] < prevhor[0])  ||)  //if input is right, and we stop going right for a minute
-              (hor[0] == 0)                        //if there IS no input   
-            ) stickneutral[0] = true;                //the "stick" is considered neutral
-
+        if (hor[0] == 0) stickneutral[0] = true;                
         if (hor[1] == 0) stickneutral[1] = true;
 
-        if (hor[0] != 0 && ActiveDisplay[0] == true) { CardUpdate(hor[0] , 0); }
-        if (hor[1] != 0 && ActiveDisplay[1] == true) { CardUpdate(hor[1] , 1); }
+        if ((hor[0] != 0) && ActiveDisplay[0] == true) { CardUpdate(hor[0] , 0); }
+        if ((hor[1] != 0) && ActiveDisplay[1] == true) { CardUpdate(hor[1] , 1); }
 
         prevhor[0] = hor[0];
         prevhor[1] = hor[1];
@@ -77,8 +81,8 @@ public class DisplayHUD : MonoBehaviour {
 
         //CardUpdate goes through the CardDisplay's individual array of cards.
 
-        if (Input.GetButton("Cancel")) CardArrayEmpty(0);
-        if (Input.GetButton("Cancel2")) CardArrayEmpty(1);
+        if (Input.GetButton("Cancel0")) CardArrayEmpty(0);
+        if (Input.GetButton("Cancel1")) CardArrayEmpty(1);
     }
 
 
@@ -99,18 +103,12 @@ public class DisplayHUD : MonoBehaviour {
     {
         //
         int i = 0;
-        //Debug.Log("i is " + i);
-        //Debug.Log("CardDatabase Length is " + CE.getDatabaseLength());
-        //Debug.Log("CardArrayFill, Entering While Loop with " + code);
-
+        
         while (i < CE.getDatabaseLength())
         {
-            //Debug.Log("CardArrayFill, Checking card #" + i);
             if (code.ToLower().Contains(CE.CardDatabase[i].code.ToLower()))
             {
-                //Debug.Log("Player: " + player);
-                //Debug.Log("Code: " + code.ToLower() + ", Current EncyCard: " + CE.CardDatabase[i].code.ToLower());
-                //Debug.Log("Sample Array length of player " + player + ": " + SampledArray[player].Count());
+                
                 SampledArray[player].Add(CE.CardDatabase[i]);
 
             }

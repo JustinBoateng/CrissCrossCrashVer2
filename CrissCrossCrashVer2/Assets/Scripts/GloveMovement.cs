@@ -31,8 +31,8 @@ public class GloveMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (GloveNumber == 0) {hor = Input.GetAxis("Horizontal"); ver = Input.GetAxis("Vertical");}
-        else if (GloveNumber == 1){hor = Input.GetAxis("Horizontal2"); ver = Input.GetAxis("Vertical2");}
+        if (GloveNumber == 0) {hor = Input.GetAxis("Horizontal0"); ver = Input.GetAxis("Vertical0");}
+        else if (GloveNumber == 1){hor = Input.GetAxis("Horizontal1"); ver = Input.GetAxis("Vertical1");}
         myrigidbody.velocity = new Vector2(hor * SpeedScale, ver * SpeedScale);
 
 
@@ -48,10 +48,17 @@ public class GloveMovement : MonoBehaviour {
 
         //so now we can detect the name of the cards we hover
 
-        if (Input.GetButton("Submit") && results[0].gameObject.tag == "CardButton" ) //if the "Submit" button is clicked while the cursor is over a card button
+        if (Input.GetButton("Submit"+GloveNumber) && results[0].gameObject.tag == "CardButton" ) //if the "Submit" button is clicked while the cursor is over a card button
         {
             DHUD.CardArrayFill(results[0].gameObject.name, GloveNumber); // run CardArrayFill using the Button's name (which is actually a reference to the code in the Card Encyclopedia to look for)
         }
+
+        //if (Input.GetButton("Submit"+1) && results[0].gameObject.tag == "CardButton") //if the "Submit" button is clicked while the cursor is over a card button
+        //{
+        //    DHUD.CardArrayFill(results[0].gameObject.name, GloveNumber); // run CardArrayFill using the Button's name (which is actually a reference to the code in the Card Encyclopedia to look for)
+        //}
+
+        
 
         //DisplayHUD will be the thing that contains the two CardDisplays, 
         //and THAT's what you'll refer to when calling DisplayFill, giving a string(Code) and an int (Glove Number)
